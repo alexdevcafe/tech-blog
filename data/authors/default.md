@@ -5,7 +5,7 @@ occupation: Software Engineer
 company: AlexDevCafe
 email: info@alexdev.cafe
 linkedin: https://www.linkedin.com/in/alexkhant
-youtube: https://google.com
+youtube: https://www.youtube.com/channel/UCesSMMekpptuQgHrGbZ3-fg
 github: https://github.com/alexdevcafe
 ---
 
