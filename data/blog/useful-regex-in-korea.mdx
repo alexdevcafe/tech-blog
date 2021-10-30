@@ -1,0 +1,204 @@
+---
+title: 'Useful Regex in Korea'
+date: '2021-10-30'
+lastmod: '2021-10-30'
+tags: ['regex', 'korea']
+draft: false
+images: ['/static/images/korean-flag.jpg']
+summary: 'Essential regex to know as a foreigner developer working in South Korea'
+---
+
+Many countries around the globe use different standards for dates, phone numbers, PO box numbers, etc. In the case of South Korea, there are also numerous formats and rules.
+
+Recently, I used Regex expressions to match user input fields according to specific sets of Korean rules. The challenges I faced inspired me to write this post.
+
+As a result, I've created a list of common regex expressions. This list is by no means an exhaustive collection as there are plenty of patterns to match Korea. I'll try to keep this list up to date.
+
+Use this [regex tester](https://regex101.com/) to play with expressions, and feel free to comment in the section below.
+
+<br />
+
+#### Birthdate
+
+A Typical Korean date format: YYMMDD. We need to match the year, then the month, and lastly - the day.
+
+```
+/^[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1])$/
+```
+
+#### Korean Resident Registration Number
+
+The first 6 digits is a [birthdate](#birthdate), the 7th digit indicates the gender. Even numbers - female, odd - male. More info in this [table](#7th-digit-of-resident-registration-number).\
+We allow matching only the following numbers: 0, 1, 2, 3, 4, 9 because the rest of the numbers are used to identify foreign residents. The 8th - 11nth digits designate birthplace & community center, 12th digit - used to distinguish persons having the same birth date and place of birth.
+The last digit stands for a checksum calculation performed on the other digits.
+
+```
+/^[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1])-[0-4,9][0-9]{6}$/
+```
+
+#### Foreigner Alien Registration Number
+
+The 7th digit should only accept 5, 6, 7, 8 where even numbers - female, odd - male.
+
+```
+/^[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1])-[5678][0-9]{6}$/
+```
+
+#### Cell phone number
+
+A common format is `xxx-xxxx-xxxx`. Most of numbers start with `010`, but we want to match all possible cases `010`,`011`,`016`,`017`,`018`,`019`.
+
+```
+/^01([0|1|6|7|8|9])-([0-9]{3,4})-([0-9]{4})$/
+```
+
+#### Telephone number
+
+First two,three digits represent [area codes](#area-codes-table).
+
+```
+/^(0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]))-(\d{3,4})-(\d{4})$/
+```
+
+#### PO Box Numbers
+
+The old format consists of 6 digits where the 1st digit stands for the metropolitan city, province, 2nd digit - region, 3rd digit - municipality/district/borough. The last 3 digits - town, county divison, and area.
+
+The new format has 5 digits where the first 2 digits - [area codes](#postal-codes-by-area), 3rd digit - town,county,autonomous region, the last 2 digits are serial numbers.
+
+```
+Old /^[1-7]\d{2}-\d{3}$/
+New /^(?:0[1-9]|[1-5][0-9]|6[0-3])-\d{3}$/
+```
+
+#### Korean Driver's License
+
+```
+/^\d{2}-\d{2}-\d{6}-\d{2}$/
+```
+
+#### Korean Passport Number
+
+The number has 9 digits in total. The first digit contains letters **M** or **S**, the remaining digits are serial numbers.
+
+```
+/^[mM|sS]\d{8}$/
+```
+
+#### Bank Account Numbers
+
+```
+Government-run Banks
+KDB /^[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{3}$/
+IBK /^[0-9]{3}-[0-9]{6}-[0-9]{2}-[0-9]{3}$/
+Nonghyup /^[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{2}$/
+
+Nationwide Banks
+Citi /^[0-9]{3}-[0-9]{6}-[0-9]{3}$/
+KEB /^[0-9]{3}-[0-9]{6}-[0-9]{5}$/
+Kookmin /^[0-9]{6}-[0-9]{2}-[0-9]{6}$/
+Shinhan /^[0-9]{3}-[0-9]{3}-[0-9]{6}$/
+Woori /^[0-9]{4}-[0-9]{3}-[0-9]{6}$/
+SC /^[0-9]{3}-[0-9]{2}-[0-9]{6}$/
+
+Local Banks
+Daegu /^[0-9]{3}-[0-9]{2}-[0-9]{6}-[0-9]$/
+Busan /^[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{2}$/
+Kwangju /^[0-9]{3}-[0-9]{3}-[0-9]{6}$/
+Jeonbuk /^[0-9]{3}-[0-9]{2}-[0-9]{7}$/
+Jeju /^[0-9]{2}-[0-9]{2}-[0-9]{6}$/
+
+Internet Banks
+Kbank /^[0-9]{3}-[0-9]{3}-[0-9]{6}$/
+Kakao /^[0-9]{4}-[0-9]{2}-[0-9]{7}$/
+```
+
+#### Business Registration Number
+
+The first 3 digits belong to a specific tax office, 2 digits in the middle - the type of business, the rest - serial numbers, and a checksum calculation.
+
+```
+/^[0-9]{3}[-]+[0-9]{2}[-]+[0-9]{5}$/
+```
+
+#### Vehicle License Plate Number
+
+The license plate number contains 2-3 digits, followed by combination of two Korean characters and 4 digits at the end.
+Meaning of Korean characters: general vehicles(가-마, 거-저, 고-조, 구-주), taxi, buses(아, 바, 사, 자), rental cars(하, 허, 호), delivery vehicles(배)
+
+```
+/^\d{2,3}[가-힣]{1}\d{4}$/
+```
+
+<br />
+<br />
+
+#### Area Codes Table
+
+| Area (English) | Area (Korean)  | Code |
+| -------------- | -------------- | ---- |
+| Seoul          | 서울특별시     | 02   |
+| Gyeonggi       | 경기도         | 031  |
+| Incheon        | 인천광역시     | 032  |
+| Gangwon        | 강원도         | 033  |
+| Chungnam       | 충청남도       | 041  |
+| Daejeon        | 대전광역시     | 042  |
+| Chungbuk       | 충청북도       | 043  |
+| Sejong         | 세종특별자치시 | 044  |
+| Busan          | 부산광역시     | 051  |
+| Ulsan          | 울산광역시     | 052  |
+| Daegu          | 대구광역시     | 053  |
+| Gyeongsangbuk  | 경상북도       | 054  |
+| Gyeongnam      | 경상남도       | 055  |
+| Jeollanam      | 전라남도       | 061  |
+| Gwangju        | 광주광역시     | 062  |
+| Jeonbuk        | 전라북도       | 063  |
+| Jeju           | 제주특별자치도 | 064  |
+
+#### Postal Codes by Area
+
+| Area (English) | Area (Korean) | Codes (range) |
+| -------------- | ------------- | ------------- |
+| Seoul          | 서울          | 01 - 09       |
+| Gyeonggi       | 경기          | 10 - 20       |
+| Incheon        | 인천          | 21 - 23       |
+| Gangwon        | 강원          | 24 - 26       |
+| Chungbuk       | 충북          | 27 - 29       |
+| Sejong         | 세종          | 30            |
+| Chungnam       | 충남          | 31 - 33       |
+| Daejeon        | 대전          | 34 - 35       |
+| Gyeongbuk      | 경북          | 36 - 40       |
+| Daegu          | 대구          | 41 - 43       |
+| Ulsan          | 울산          | 44 - 45       |
+| Busan          | 부산          | 46 - 49       |
+| Gyeongnam      | 경남          | 50 - 53       |
+| Jeonbuk        | 전북          | 54 - 56       |
+| Jeonnam        | 전남          | 57 - 60       |
+| Gwangju        | 광주          | 61 - 62       |
+| Jeju           | 제주          | 63            |
+
+#### The 7th digit of Resident Registration Number
+
+| Digit | Century      | Gender         |
+| ----- | ------------ | -------------- |
+| 9     | 1800-1899    | male           |
+| 0     | 1800-1899    | female         |
+| 1     | 1900-1999    | male           |
+| 2     | 1900-1999    | female         |
+| 3     | 2000-present | male           |
+| 4     | 2000-present | female         |
+| 5     | 1900-1999    | foreign male   |
+| 6     | 1900-1999    | foreign female |
+| 7     | 2000-present | foreign male   |
+| 8     | 2000-present | foreign female |
+
+\
+\
+Further Reading:
+
+[Telephone numbers in Korea](https://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea)\
+[Republic of Korea passport](https://en.wikipedia.org/wiki/Republic_of_Korea_passport)
+[List of Korean Banks](https://en.wikipedia.org/wiki/List_of_banks_in_South_Korea)\
+[Resident Registration Number](https://en.wikipedia.org/wiki/Resident_registration_number)\
+[Business Registration Number (article in Korean)](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=bbqtax&logNo=30185016349)\
+[Korean Driver's License (article in Korean)](https://m.blog.naver.com/jeehoon0759/221761312831)

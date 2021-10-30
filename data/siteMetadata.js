@@ -8,7 +8,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/alexdevcafe/personal-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.jpg',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/logo.png',
   email: 'info@alexdev.cafe',
   github: 'https://github.com/alexdevcafe',
   // twitter: 'https://twitter.com/Twitter',
