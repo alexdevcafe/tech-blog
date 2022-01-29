@@ -9,7 +9,6 @@ youtube: https://www.youtube.com/channel/UCesSMMekpptuQgHrGbZ3-fg
 github: https://github.com/alexdevcafe
 ---
 
-Hi, Alex here. I’m a software developer based in Seoul, South Korea. I specialize in building robust applications with typescript.
-I prefer using React for web apps and React Native for mobile development unless I need to access more native capabilities, then I go with Swift or Java.
+Alex is a seasoned software developer based in Seoul, South Korea.
 
-Through this blog and my youtube channel, I hope to share bits and pieces on programming and practical tips on building apps.
+The purpose of this blog is to share useful tips and tricks about programming and help others to begin their careers in the world of software development.
