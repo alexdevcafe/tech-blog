@@ -6,7 +6,7 @@ company: AlexDevCafe
 email: grashupfer99@gmail.com
 linkedin: https://www.linkedin.com/in/alexkhant
 youtube: https://www.youtube.com/channel/UCesSMMekpptuQgHrGbZ3-fg
-github: https://github.com/alexdevcafe
+github: https://github.com/grashupfer99
 ---
 
 Hi! I'm Alex, a software developer based in Seoul, South Korea, and this is alexdev.cafe - my home on the web.

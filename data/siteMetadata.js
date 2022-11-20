@@ -10,7 +10,7 @@ const siteMetadata = {
   image: '/static/images/avatar.jpg',
   socialBanner: '/static/images/logo.png',
   email: 'grashupfer99@gmail.com',
-  github: 'https://github.com/alexdevcafe',
+  github: 'https://github.com/grashupfer99',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',
   youtube: 'https://www.youtube.com/channel/UCesSMMekpptuQgHrGbZ3-fg',
