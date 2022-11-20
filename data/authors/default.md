@@ -3,7 +3,7 @@ name: Alex Khant
 avatar: /static/images/avatar.jpg
 occupation: Software Engineer
 company: AlexDevCafe
-email: info@alexdev.cafe
+email: grashupfer99@gmail.com
 linkedin: https://www.linkedin.com/in/alexkhant
 youtube: https://www.youtube.com/channel/UCesSMMekpptuQgHrGbZ3-fg
 github: https://github.com/alexdevcafe

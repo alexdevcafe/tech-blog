@@ -9,7 +9,7 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.jpg',
   socialBanner: '/static/images/logo.png',
-  email: 'info@alexdev.cafe',
+  email: 'grashupfer99@gmail.com',
   github: 'https://github.com/alexdevcafe',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',
